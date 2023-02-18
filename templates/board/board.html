@@ -11,7 +11,7 @@
         <tbody>
             {% for post in post_list %}
             <tr>
-                <td>{{ post.title }}</td>
+                <td><a href="{% url 'board:post_detail' post.pk %}">{{ post.title }}</a></td>
                 <td>{{ post.contributer }}</td>
                 <td>{{ post.pub_date }}</td>
             </tr>
