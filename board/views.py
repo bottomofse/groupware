@@ -17,7 +17,7 @@ class PostList(LoginRequiredMixin, ListView):
     context_object_name = 'post_list'
 
 class PostDetail(LoginRequiredMixin, DetailView):
-    template_name = 'board/post.html'
+    template_name = 'board/detail.html'
     model = Post
     context_object_name = 'post_detail'
 
