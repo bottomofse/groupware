@@ -1,4 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>掲示板</h1>
+<div class="col-sm-4 offset-md-1 py-4">
+    <h4 class="text-blue">掲示板</h4>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>タイトル</th><th>投稿者</th><th>日時</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in post_list %}
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>{{ post.contributer }}</td>
+                <td>{{ post.pub_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
