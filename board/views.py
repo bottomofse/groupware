@@ -1,7 +1,9 @@
 from django.shortcuts import render
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import (
+    ListView, DetailView, CreateView, DeleteView
+)
 from django.urls import reverse_lazy
 
 from .models import Post
@@ -29,3 +31,9 @@ class PostCreate(LoginRequiredMixin, CreateView):
         post.contributer = self.request.user.username
         post.save()
         return super().form_valid(form)
+
+class PostDelete(DeleteView):
+    template_name = 'board/delete.html'
+    model = Post
+    success_url = reverse_lazy('board:board')
+    

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <p>投稿を削除します。よろしいですか？</p>
+    <button name="btn_submit" type="submit">
+        削除
+    </button>
+</form>
+{% endblock %}
