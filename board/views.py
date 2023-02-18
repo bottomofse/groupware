@@ -2,12 +2,12 @@ from django.shortcuts import render
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
-    ListView, DetailView, CreateView, DeleteView
+    ListView, DetailView, CreateView, UpdateView, DeleteView
 )
 from django.urls import reverse_lazy
 
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, PostUpdateForm
 
 class BoardView(LoginRequiredMixin, ListView):
     template_name = 'board/board.html'
@@ -32,8 +32,15 @@ class PostCreate(LoginRequiredMixin, CreateView):
         post.save()
         return super().form_valid(form)
 
+class PostUpdate(UpdateView):
+    template_name = 'board/update.html'
+    model = Post
+    form_class = PostUpdateForm
+
+    def get_success_url(self):
+        return reverse_lazy('board:post_detail', kwargs={'pk':self.kwargs['pk']})
+
 class PostDelete(DeleteView):
     template_name = 'board/delete.html'
     model = Post
     success_url = reverse_lazy('board:board')
-    
