@@ -22,7 +22,7 @@ class PostDetail(LoginRequiredMixin, DetailView):
     context_object_name = 'post_detail'
 
 class PostCreate(LoginRequiredMixin, CreateView):
-    template_name = 'board/form.html'
+    template_name = 'board/create.html'
     success_url = reverse_lazy('board:post_list')
     form_class = PostForm
 
