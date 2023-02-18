@@ -20,8 +20,8 @@
             </tr>
         </tbody>
     </table>
-    <a href="{% url 'board:post_list' %}">掲示板へ</a>
-    <a href="{% url 'board:post_update' post_detail.pk %}">編集</a>
-    <a href="{% url 'board:post_delete' post_detail.pk %}">削除</a>
+    <a href="{% url 'board:post_list' %}">投稿一覧へ</a>
+    <button onclick='location.href="{% url 'board:post_update' post_detail.pk %}"'>編集</button>
+    <button onclick='location.href="{% url 'board:post_delete' post_detail.pk %}"'>削除</button>
 </div>
 {% endblock %}
