@@ -34,6 +34,11 @@ class TestAccounts(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse(settings.LOGIN_REDIRECT_URL))
 
+    def test_login_failure(self):
+        response = self.client.post('/login/', {'username':self.username,'password':'aaa'})
+        self.assertContains(response, 'ユーザー名')
+        self.assertContains(response, 'パスワード')
+
     def test_logout_success(self):
         response = self.client.post('/login/', {'username':self.username,'password':self.password})
         self.assertEqual(response.status_code, 302)
