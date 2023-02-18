@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-sm-4 offset-md-1 py-4">
+    <h4 class="text-blue">投稿</h4>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>内容</th>
+                <th>投稿者</th>
+                <th>日時</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ post_detail.title }}</td>
+                <td>{{ post_detail.contents }}</td>
+                <td>{{ post_detail.contributer }}</td>
+                <td>{{ post_detail.pub_date }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
