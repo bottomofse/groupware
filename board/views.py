@@ -9,8 +9,8 @@ from django.urls import reverse_lazy
 from .models import Post
 from .forms import PostForm, PostUpdateForm
 
-class BoardView(LoginRequiredMixin, ListView):
-    template_name = 'board/board.html'
+class PostList(LoginRequiredMixin, ListView):
+    template_name = 'board/list.html'
     model = Post
     ordring = '-pub_date'
 
@@ -23,7 +23,7 @@ class PostDetail(LoginRequiredMixin, DetailView):
 
 class PostCreate(LoginRequiredMixin, CreateView):
     template_name = 'board/form.html'
-    success_url = reverse_lazy('board:board')
+    success_url = reverse_lazy('board:post_list')
     form_class = PostForm
 
     def form_valid(self, form):
@@ -43,4 +43,4 @@ class PostUpdate(UpdateView):
 class PostDelete(DeleteView):
     template_name = 'board/delete.html'
     model = Post
-    success_url = reverse_lazy('board:board')
+    success_url = reverse_lazy('board:post_list')
